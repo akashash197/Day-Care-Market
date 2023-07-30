@@ -1,21 +1,17 @@
 // country delete
 const countryDelete = (dataid) => {
     var countryId = dataid;
-    console.log(countryId);
-  
+
     var countryDeleteArr = { 'id': countryId };
   
-    console.log(countryDeleteArr);
   
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
       var final_data = JSON.parse(this.responseText);
-      console.log(final_data);
   
       var status = final_data.status;
   
       var total_data = Object.keys(final_data).length;
-      console.log(total_data);
   
       if (total_data > 0) {
         if (status === 1) {
@@ -29,7 +25,7 @@ const countryDelete = (dataid) => {
       }
     };
   
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=countryDelete");
+    xhttp.open("POST", "http://localhost:8000/countryDelete");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(countryDeleteArr));
   };
@@ -46,9 +42,7 @@ const countryList = () => {
         var final_data=JSON.parse(this.responseText);
   
        
-        console.log(final_data);
         var total_data=final_data.data.length;
-        console.log(total_data);
         
         var html_body = "";
         for (var i = 0; i < total_data; i++) {
@@ -64,7 +58,7 @@ const countryList = () => {
         
         
     }
-    xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=country_list");
+    xhttp.open("GET", "http://localhost:8000/country_list");
     xhttp.send();
     };
     

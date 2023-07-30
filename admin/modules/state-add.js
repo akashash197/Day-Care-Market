@@ -21,7 +21,7 @@ export const stateAdd = () => {
       }
   };
 
-  xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=stateAdd");
+  xhttp.open("POST", "http://localhost:8000/stateAdd");
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify(stateaddArr));
   };

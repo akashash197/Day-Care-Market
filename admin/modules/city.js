@@ -8,12 +8,10 @@ const cityDelete = (dataid) => {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
       var final_data = JSON.parse(this.responseText);
-      console.log(final_data);
   
       var status = final_data.status;
   
       var total_data = Object.keys(final_data).length;
-      console.log(total_data);
   
       if (total_data > 0) {
         if (status === 1) {
@@ -27,7 +25,7 @@ const cityDelete = (dataid) => {
       }
     };
   
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=cityDelete");
+    xhttp.open("POST", "http://localhost:8000/cityDelete");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(cityDeleteArr));
   };
@@ -42,10 +40,7 @@ const cityDelete = (dataid) => {
             
         var final_data=JSON.parse(this.responseText);
 
-      
-        console.log(final_data);
         var total_data=final_data.data.length;
-        console.log(total_data);
         
         var html_body = "";
         for (var i = 0; i < total_data; i++) {
@@ -57,13 +52,10 @@ const cityDelete = (dataid) => {
                             "<td><a href=\"city-edit.html?id=" + final_data.data[i].id + "\">Edit</a>&nbsp; | &nbsp;<button class='btn-danger' onclick=\"cityDelete(this.getAttribute('dataid'))\" dataid='" + final_data.data[i].id + "'>Delete</button></td>" +
                         "</tr>";
         }
-        document.getElementById("tbl_data").innerHTML = html_body;
-        
-
-        
+        document.getElementById("tbl_data").innerHTML = html_body;  
         
     }
-    xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=city_list");
+    xhttp.open("GET", "http://localhost:8000/city_list");
     xhttp.send();
     };
 

@@ -2,7 +2,6 @@ export const brandAdd = () => {
     var brandname = document.getElementById("brandName").value;
 
     var brandAddArr = { 'brandName': brandname };
-    console.log(brandAddArr);
 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
@@ -17,7 +16,7 @@ export const brandAdd = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=brandAdd");
+    xhttp.open("POST", "http://localhost:8000/brandAdd");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(brandAddArr));
   }

@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard Dark Edition by Creative Tim
+    Add Country | Daycare Market
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -58,7 +58,7 @@
           <div class="navbar-wrapper justify-content-end">
             <a class="nav-link text-secondary" href="profile.html">
               <i class="material-icons">person</i>
-              <p class="d-inline">
+              <p class="d-inline" id="first_name">
                 Account
               </p>
             </a>
@@ -139,16 +139,19 @@
 
   <script type="module">
     
-    import {countryadd} from "./modules/country-add.js";
+    import {countryAdd} from "./modules/country-add.js";
     const form = document.getElementById("countryForm");
     form.addEventListener("submit", function (event) {
         event.preventDefault();
-        countryadd();
+        countryAdd();
     });
       
     
   </script>
 
+  <script>
+    document.getElementById("first_name").innerHTML = (userLogin.data[0].first_name);
+  </script>
   
  <!-- Log out -->
 <script>

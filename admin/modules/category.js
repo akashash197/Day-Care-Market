@@ -24,7 +24,7 @@ const categoryDelete = (dataid) => {
       }
     };
   
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=categoryDelete");
+    xhttp.open("POST", "http://localhost:8000/categoryDelete");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(categoryDeleteArr));
   };
@@ -51,11 +51,8 @@ const categoryList = () => {
         }
         document.getElementById("tbl_data").innerHTML = html_body;
         
-
-        
-        
     }
-    xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=category_list");
+    xhttp.open("GET", "http://localhost:8000/category_list");
     xhttp.send();
     };
 

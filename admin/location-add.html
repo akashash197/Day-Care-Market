@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard Dark Edition by Creative Tim
+    Add Location | Daycare Market
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -57,8 +57,8 @@
           <div class="navbar-wrapper justify-content-end">
             <a class="nav-link text-secondary" href="profile.html">
               <i class="material-icons">person</i>
-              <p class="d-inline">
-                Account
+              <p class="d-inline" id="first_name">
+                
               </p>
             </a>
           </div>
@@ -166,10 +166,7 @@
               
           var final_data=JSON.parse(this.responseText);
 
-        
-          console.log(final_data);
           var total_data=final_data.data.length;
-          console.log(total_data);
 
           var html_body = "";
           var isFirstOption = true;
@@ -184,11 +181,8 @@
           }
           document.getElementById("country_data").innerHTML = html_body;
           
-
-          
-          
       }
-      xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=country_list");
+      xhttp.open("GET", "http://localhost:8000/country_list");
       xhttp.send();
       };
 
@@ -206,10 +200,7 @@
             var final_data=JSON.parse(this.responseText);
             if(final_data.status==1){
 
-           
-            console.log(final_data);
             var total_data=final_data.data.length;
-            console.log(total_data);
             
             var html_body="";
             for(i=0;i<total_data;i++)
@@ -226,12 +217,12 @@
             
             
         }
-        xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=state_droplist&country_id="+country_id);
+        xhttp.open("GET", "http://localhost:8000/state_droplist?country_id="+country_id);
         xhttp.send();
     }
   </script>
 
-  <!-- Populate state list -->
+  <!-- Populate city list -->
   <script>
     loadcity = () => {
       var state_id = document.getElementById("state_data").value;
@@ -242,10 +233,7 @@
             var final_data=JSON.parse(this.responseText);
             if(final_data.status==1){
 
-           
-            console.log(final_data);
             var total_data=final_data.data.length;
-            console.log(total_data);
             
             var html_body="";
             for(i=0;i<total_data;i++)
@@ -262,7 +250,7 @@
             
             
         }
-        xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=city_droplist&state_id="+state_id);
+        xhttp.open("GET", "http://localhost:8000/city_droplist?state_id="+state_id);
         xhttp.send();
     }
   </script>
@@ -276,6 +264,10 @@
         event.preventDefault();
         locationAdd();
     }); 
+  </script>
+
+  <script>
+    document.getElementById("first_name").innerHTML = (userLogin.data[0].first_name);
   </script>
 
  <!-- Log out -->

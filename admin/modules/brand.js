@@ -24,7 +24,7 @@ const brandDelete = (dataid) => {
       }
     };
   
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=brandDelete");
+    xhttp.open("POST", "http://localhost:8000/brandDelete");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(brandDeleteArr));
   };
@@ -55,7 +55,7 @@ const brandList = () => {
         
         
     }
-    xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=brand_list");
+    xhttp.open("GET", "http://localhost:8000/brand_list");
     xhttp.send();
     };
 

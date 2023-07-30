@@ -16,7 +16,7 @@ export const categoryAdd = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=categoryAdd");
+    xhttp.open("POST", "http://localhost:8000/categoryAdd");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(categoryAddArr));
   }

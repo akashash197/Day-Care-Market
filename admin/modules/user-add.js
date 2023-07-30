@@ -26,7 +26,7 @@ export const userAdd = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=userAdd");
+    xhttp.open("POST", "http://localhost:8000/userAdd");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(userAddArr));
   }

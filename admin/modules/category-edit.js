@@ -20,7 +20,7 @@ export const categoryEdit = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=categoryEdit");
+    xhttp.open("POST", "http://localhost:8000/categoryEdit");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(categoryEditArr));
   }

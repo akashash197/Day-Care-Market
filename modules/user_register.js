@@ -1,15 +1,11 @@
-export const userEdit = () => {
-    var url = new URL(window.location.href);  // Get the current URL
-      
-    var id = url.searchParams.get("id"); // Get the value of the 'id' parameter
-  
+export const userRegister = () => {
     var firstname = document.getElementById("firstName").value;
     var lastname = document.getElementById("lastName").value;
     var email = document.getElementById("email").value;
-    var userrole = document.getElementById("userRole").value;
+    var password = document.getElementById("password").value;
 
-    var userEditArr = {'id':id, 'firstName': firstname, 'lastName': lastname, 'email': email, 'userRole': userrole };
-
+    var userRegArr = {'firstName': firstname, 'lastName': lastname, 'email': email, 'password': password};
+ 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
         var final_data = JSON.parse(this.responseText);
@@ -20,16 +16,17 @@ export const userEdit = () => {
 
         if (total_data > 0) {
             if (status === 1) {
-                window.location.href = "user.html";
+                window.location.href = "login.html";
+                alert("Successfully Registered");
               } else {
-                console.log("Invalid data");
+                document.getElementById("message").innerHTML=(final_data.msg);
               }
         } else {
             console.log("Invalid data");
         }
     };
 
-    xhttp.open("POST", "http://localhost:8000/userEdit");
+    xhttp.open("POST", "http://localhost:8000/userRegister");
     xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send(JSON.stringify(userEditArr));
+    xhttp.send(JSON.stringify(userRegArr));
   }

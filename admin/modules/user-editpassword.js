@@ -6,6 +6,7 @@ export const userEditPass = () => {
     var password = document.getElementById("password").value;
 
     var userEditPassArr = {'id':id, 'password': password };
+    console.log(userEditPassArr);
 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
@@ -26,7 +27,7 @@ export const userEditPass = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=userEditPass");
+    xhttp.open("POST", "http://localhost:8000/userEditPass");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(userEditPassArr));
   }

@@ -15,10 +15,8 @@ export const cityEdit = () => {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
       var final_data = JSON.parse(this.responseText);
-      console.log(final_data);
 
       var total_data = Object.keys(final_data).length;
-      console.log(total_data);
 
       if (total_data > 0) {
           window.location.href = "city.html";
@@ -27,7 +25,7 @@ export const cityEdit = () => {
       }
   };
 
-  xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=cityEdit");
+  xhttp.open("POST", "http://localhost:8000/cityEdit");
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify(cityEditArr));
 

@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard Dark Edition by Creative Tim
+    Update State | Daycare Market
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -58,8 +58,8 @@
           <div class="navbar-wrapper justify-content-end">
             <a class="nav-link text-secondary" href="profile.html">
               <i class="material-icons">person</i>
-              <p class="d-inline">
-                Account
+              <p class="d-inline" id="first_name">
+               
               </p>
             </a>
           </div>
@@ -179,7 +179,7 @@
           
           
       }
-      xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=country_list");
+      xhttp.open("GET", "http://localhost:8000/country_list");
       xhttp.send();
       };
 
@@ -198,7 +198,10 @@
       
     
   </script>
-
+  
+  <script>
+    document.getElementById("first_name").innerHTML = (userLogin.data[0].first_name);
+  </script>
   
  <!-- Log out -->
 <script>

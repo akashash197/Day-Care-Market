@@ -4,16 +4,13 @@ const locationDelete = (dataid) => {
     
     var locationDeleteArr = { 'id': locationId };
   
-  
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function () {
       var final_data = JSON.parse(this.responseText);
-      console.log(final_data);
   
       var status = final_data.status;
   
       var total_data = Object.keys(final_data).length;
-      console.log(total_data);
   
       if (total_data > 0) {
         if (status === 1) {
@@ -27,7 +24,7 @@ const locationDelete = (dataid) => {
       }
     };
   
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=locationDelete");
+    xhttp.open("POST", "http://localhost:8000/locationDelete");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(locationDeleteArr));
   };
@@ -42,10 +39,7 @@ const locationDelete = (dataid) => {
             
         var final_data=JSON.parse(this.responseText);
 
-      
-        console.log(final_data);
         var total_data=final_data.data.length;
-        console.log(total_data);
         
         var html_body = "";
         for (var i = 0; i < total_data; i++) {
@@ -59,12 +53,10 @@ const locationDelete = (dataid) => {
                         "</tr>";
         }
         document.getElementById("tbl_data").innerHTML = html_body;
-        
-
-        
+    
         
     }
-    xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=location_list");
+    xhttp.open("GET", "http://localhost:8000/location_list");
     xhttp.send();
     };
 

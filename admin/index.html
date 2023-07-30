@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./index-css/index-style.css">
 
-  <title>Login</title>
+  <title>Login | Daycare Market</title>
   <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
 
   <script>
@@ -36,13 +36,8 @@
     </div>
 
     
-    <!-- <div class="reset-forgot"> -->
-    <!-- <button type="reset" id="cancelbtn"> Cancel</button> -->
-   
-    <!-- </div>   -->
     
-    
-    <button type="button" onclick="userLogin()" >Login</button>
+    <button type="button" onclick="adminLogin()" >Login</button>
     <p style="color:tomato;" id="err_msg"></p>
     
     <p class="home-button"><a href="/etransport/index.php" target="_blank">Back to Home</a></p>
@@ -59,33 +54,36 @@
 
     <!-- Login Script Start -->
     <script>
-            function userLogin() {
-                var username = document.getElementById("userName").value;
-                var userpassword = document.getElementById("userPassword").value;
-                var loginArr = {'userName': username, "userPassword": userpassword};
-
-                const xhttp = new XMLHttpRequest();
-                xhttp.onload = function() {
-                    var final_data = JSON.parse(this.responseText);
-                    console.log(final_data);
-                    var total_data = final_data.data.length;
-                    console.log(total_data);
-                    
-                    if (total_data > 0) {
-                        localStorage.setItem('userLogin', JSON.stringify(final_data));
-                        window.location.href = "dashboard.html";
-                    } 
-                    else {
-                        //console.log("Invalid login data");
-                        document.getElementById("err_msg").innerHTML= "Invalid Usernme or Password";
-                    }
-                    
-                };
-
-                xhttp.open("GET", "http://localhost/ecomm/admin/config/api.php?api_name=userlogin&loginArr=" + JSON.stringify(loginArr));
-                xhttp.send();
+      function adminLogin() {
+        var username = document.getElementById("userName").value;
+        var userpassword = document.getElementById("userPassword").value;
+        var loginArr = { userName: username, userPassword: userpassword };
+    
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          try {
+            var final_data = JSON.parse(this.responseText);
+            console.log(final_data);
+            var total_data = final_data.data.length;
+            console.log(total_data);
+    
+            if (total_data > 0) {
+              localStorage.setItem('userLogin', JSON.stringify(final_data));
+              window.location.href = "dashboard.html";
+            } else {
+              //console.log("Invalid login data");
+              document.getElementById("err_msg").innerHTML = "Invalid Username or Password";
             }
-        </script>
+          } catch (error) {
+            console.error("Error parsing response:", error);
+            document.getElementById("err_msg").innerHTML = "Error during login process";
+          }
+        };
+    
+        xhttp.open("GET", "http://localhost:8000/adminlogin?loginArr=" + JSON.stringify(loginArr));
+        xhttp.send();
+      }
+    </script>
         <!-- Login Script End -->
 </body>
 </html>

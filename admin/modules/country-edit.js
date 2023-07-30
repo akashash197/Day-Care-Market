@@ -4,7 +4,6 @@ export const countryEdit = () => {
     
     var id = url.searchParams.get("id"); // Get the value of the 'id' parameter
 
-    console.log(id); // Output
     
     var countryname = document.getElementById("countryName").value;
     var countryEditArr = { 'countryName': countryname , "id" : id };
@@ -25,7 +24,7 @@ export const countryEdit = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=countryEdit");
+    xhttp.open("POST", "http://localhost:8000/countryEdit");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(countryEditArr));
 

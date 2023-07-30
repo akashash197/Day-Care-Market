@@ -22,7 +22,7 @@ export const cityAdd = () => {
       }
   };
 
-  xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=cityAdd");
+  xhttp.open("POST", "http://localhost:8000/cityAdd");
   xhttp.setRequestHeader("Content-Type", "application/json");
   xhttp.send(JSON.stringify(cityaddArr));
   };

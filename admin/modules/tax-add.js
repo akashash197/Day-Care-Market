@@ -17,7 +17,7 @@ export const taxAdd = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=taxAdd");
+    xhttp.open("POST", "http://localhost:8000/taxAdd");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(taxAddArr));
   }

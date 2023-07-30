@@ -1,4 +1,4 @@
-export const countryadd = () => {
+export const countryAdd = () => {
     var countryname = document.getElementById("countryName").value;
     var countryaddArr = { 'countryName': countryname };
 
@@ -17,7 +17,7 @@ export const countryadd = () => {
         }
     };
 
-    xhttp.open("POST", "http://localhost/ecomm/admin/config/api.php?api_name=countryAdd");
+    xhttp.open("POST", "http://localhost:8000/countryAdd");
     xhttp.setRequestHeader("Content-Type", "application/json");
     xhttp.send(JSON.stringify(countryaddArr));
     };
